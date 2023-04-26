@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="board.list">
+
+<!-- 	<resultMap id="boardResult" type="Board">
+		<result column="board_num" property="boardNum"></result>
+		<result column="board_title" property="boardTitle"></result>
+		<result column="board_writer" property="boardWriter"></result>
+		<result column="board_content" property="boardContent"></result>
+		<result column="board_postdate" property="boardPostdate"></result>
+		<result column="board_like" property="boardLike"></result>
+	</resultMap> -->
+
+	<select id="selectBoard" resultType="Board"> <!-- 객체 하나일 떄 resultType="Board"-->
+
+	      SELECT 
+	      	*
+	      FROM board
+	      
+	</select>
+
+	<insert id="insertBoard" parameterType="Board"> 
+	      
+	      insert into BOARD(boardTitle, boardWriter,boardContent,boardPostdate)
+			values (#{boardTitle}, #{boardWriter}, #{boardContent}, sysdate)
+	</insert>
+	
+	<select id="selectBoardOne" parameterType="int" resultType="Board">
+
+      SELECT *
+      FROM board
+      WHERE boardNum = #{boardId}
+	      
+	</select>
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="comment.list">
+
+	<insert id="insertComment" parameterType="Comment">
+
+		Insert into "COMMENT" (boardNum, commentWriter, commentContent)
+		Values (#{boardNum}, #{commentWriter}, #{commentContent})
+
+	</insert>
+	
+	
+	<select id="selectComment" resultType="Comment"> <!-- 객체 하나일 떄 resultType="Board"-->
+
+     SELECT *
+     FROM "COMMENT"
+     WHERE boardNum = #{boardId}
+	      
+	</select>
+
+</mapper>
